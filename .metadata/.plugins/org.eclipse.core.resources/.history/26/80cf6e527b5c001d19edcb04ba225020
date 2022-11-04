@@ -1,0 +1,24 @@
+package TPE;
+
+import java.util.Iterator;
+
+public class ListaVinculada implements Iterable<Nodo> {
+	
+	private int criterio;
+	
+	public ListaVinculada(int criterio) {
+		this.criterio = criterio;
+	}
+	
+	public void addNodo() {
+		
+	}
+
+	@Override
+	public Iterator<Nodo> iterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+}

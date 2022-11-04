@@ -1,0 +1,23 @@
+package TPE;
+
+import java.util.Iterator;
+
+public class Nodo implements Iterator<Nodo>{
+
+	public Nodo() {
+		
+	}
+	
+	@Override
+	public boolean hasNext() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Nodo next() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

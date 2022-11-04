@@ -1,0 +1,13 @@
+package TPE;
+
+public class Main {
+
+	public static void main(String[] args) {
+		ListaVinculada lista = new ListaVinculada(1);
+		lista.addNodo();
+		for(Nodo nodo:lista) {
+			System.out.println(nodo);
+		}
+	}
+
+}

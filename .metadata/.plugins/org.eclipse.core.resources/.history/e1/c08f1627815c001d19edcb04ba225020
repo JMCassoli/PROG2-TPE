@@ -1,0 +1,30 @@
+package TPE;
+
+import java.util.Iterator;
+
+public class ListaVinculada implements Iterable<Nodo> {
+	
+	private int criterio; 
+	public static int maxIteraciones;
+	
+	public ListaVinculada(int criterio, int maxIteraciones) {
+		
+		this.criterio = criterio;
+		this.maxIteraciones=maxIteraciones;
+	}
+	
+	public void addNodo() {
+		
+	}
+	
+	public Nodo getNodo(int pos) {
+		return getNodo(0);
+	}
+
+	@Override
+	public Nodo iterator() {
+		return new Nodo(0);
+	}
+
+
+}

@@ -1,0 +1,32 @@
+package TPE;
+
+import java.util.Iterator;
+
+public class Nodo implements Comparable<Nodo>, Iterator<Nodo>{
+
+	private int posicion;
+	
+	public Nodo() {
+		posicion=0;
+	}
+	
+	
+	@Override
+	public boolean hasNext() {
+		return posicion<=ListaVinculada.maxIteraciones;		
+	}
+
+	@Override
+	public Nodo next() {
+		posicion++;
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int compareTo(Nodo o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

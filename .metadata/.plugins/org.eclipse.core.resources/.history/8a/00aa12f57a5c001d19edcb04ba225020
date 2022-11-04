@@ -1,0 +1,30 @@
+package TPE;
+
+import java.util.Iterator;
+
+public class Nodo implements Comparable<Nodo>, Iterator<Object>{
+
+	private int cantIteraciones, maxIteraciones;
+	
+	public Nodo(int maxIteraciones) {
+		this.maxIteraciones= maxIteraciones;
+	}
+	
+	@Override
+	public boolean hasNext() {
+		return cantIteraciones<=maxIteraciones;		
+	}
+
+	@Override
+	public Nodo next() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int compareTo(Nodo o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}
