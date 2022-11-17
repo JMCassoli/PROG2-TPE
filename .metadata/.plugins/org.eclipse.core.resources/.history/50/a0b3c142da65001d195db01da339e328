@@ -1,0 +1,25 @@
+package TPE;
+
+public class Nodo<T> {
+
+	private Nodo<T> siguienteNodo;
+	private T valor;
+	
+	public Nodo(Nodo<T> nodo) {
+		this.setSiguienteNodo(nodo);
+	}
+
+	public Nodo<T> getSiguienteNodo() {
+		return siguienteNodo;
+	}
+
+	public void setSiguienteNodo(Nodo<T> nodo) {
+		this.siguienteNodo = nodo;
+	}
+
+	public T getValor() {
+		return this.valor;
+	}
+	
+
+}

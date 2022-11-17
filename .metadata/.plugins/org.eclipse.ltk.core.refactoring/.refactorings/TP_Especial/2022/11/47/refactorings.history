@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Encapsulate field &apos;TPE.ListaVinculada.orden&apos; in &apos;TPE.ListaVinculada&apos;&#x0D;&#x0A;- Original project: &apos;TP_Especial&apos;&#x0D;&#x0A;- Original element: &apos;TPE.ListaVinculada.orden&apos;&#x0D;&#x0A;- Setter method name: &apos;setOrden&apos;&#x0D;&#x0A;- Field visibility: &apos;public&apos;&#x0D;&#x0A;- Use getter and setter methods in declaring type" comments="false" declaring="true" description="Encapsulate field &apos;orden&apos;" flags="589830" id="org.eclipse.jdt.ui.self.encapsulate" input="/src&lt;TPE{ListaVinculada.java[ListaVinculada^orden" insertion="2" setter="setOrden" stamp="1668549963526" version="1.0" visibility="1"/>
+</session>

@@ -1,0 +1,37 @@
+package TPE;
+
+import java.util.Comparator;
+import java.util.Iterator;
+
+
+public class ListaVinculada<T> implements Iterable<Integer> {
+	
+	private int criterio; 
+	private Nodo<T> primerNodo;
+	private Comparator<T> orden;
+	private Nodo<T> anteriorNodo;
+	
+	public ListaVinculada(int criterio) {
+		this.primerNodo=null;
+		this.criterio = criterio;
+	}
+	
+	public void insertarOrdenado(T nuevo) {
+		
+	}
+	
+	public void ordenar() {
+		
+	}
+
+	@Override
+	public Iterator<Integer> iterator() {
+		return new IteradorNodo(this.primerNodo);
+	}
+
+	public void setOrden(Comparator<T> orden) {
+		this.orden = orden;
+	}
+
+
+}

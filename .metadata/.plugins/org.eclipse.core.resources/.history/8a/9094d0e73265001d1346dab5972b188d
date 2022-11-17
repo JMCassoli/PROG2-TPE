@@ -1,0 +1,28 @@
+package TPE;
+
+import java.util.Iterator;
+
+public class IteradorNodo<T> implements Iterator<T> {
+	
+	private Nodo actual;
+	private T valor;
+	
+	public IteradorNodo(T nodo) {
+		if(nodo==null) {
+			Nodo primer = new Nodo(0,nodo);
+		}
+		this.actual = nodo;
+	}
+
+	@Override
+	public boolean hasNext() {
+		return (this.actual!=null);
+	}
+
+	@Override
+	public T next() {
+		T result = actual.getValor();
+		return T;
+	}
+
+}
