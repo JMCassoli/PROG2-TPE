@@ -1,0 +1,50 @@
+package TPE;
+
+import TPE.Comparadores.Comparador;
+import TPE.Comparadores.ComparadorAlumnos;
+import TPE.Comparadores.ComparadorNegado;
+import TPE.Comparadores.ComparadorStrings;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Comparador comparador = new ComparadorAlumnos();
+		ListaVinculada lista = new ListaVinculada();
+		lista.setOrden(comparador);
+		Alumno a1 = new Alumno("juan", "perez", 1 , 1);
+		Alumno a2 = new Alumno("kuan", "perez", 1 , 1);
+		
+		lista.insertarOrdenado(a1);
+		lista.insertarOrdenado(a2);
+		
+		
+		
+		
+//		lista.insertarOrdenado("es");
+//		lista.insertarOrdenado("facil");
+//		lista.insertarOrdenado("parcial");
+//		lista.insertarOrdenado("prog2");
+
+//		lista.insertarOrdenado(2);
+//		lista.insertarOrdenado(1);
+//		lista.insertarOrdenado(2);
+//		lista.insertarOrdenado(3);
+//		lista.insertarOrdenado(5);
+//		lista.insertarOrdenado(5);
+//		lista.insertarOrdenado(1);
+//		lista.insertarOrdenado(2);
+//		lista.insertarOrdenado(4);
+//		lista.insertarOrdenado(5);
+//		lista.insertarOrdenado(4);
+//		lista.insertarOrdenado(7);
+//		lista.insertarOrdenado(7);
+//		lista.insertarOrdenado(2);
+		
+		lista.mostrarLista();
+		System.out.println("---------------------------");
+		System.out.println("posicion : " + lista.obtenerPosicion("parcial"));
+		//ComparadorIntegersDesc comparador2 = new ComparadorIntegersDesc();
+		//lista.setOrden(comparador);
+		lista.mostrarLista();
+		}
+}

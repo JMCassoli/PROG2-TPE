@@ -1,0 +1,38 @@
+package TPE;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Comparador comparador = new ComparadorIntegers();
+		Comparador no = new ComparadorNegado(comparador);
+		ListaVinculada lista = new ListaVinculada();
+		lista.setOrden(no);
+		
+//		lista.insertarOrdenado("es");
+//		lista.insertarOrdenado("facil");
+//		lista.insertarOrdenado("parcial");
+//		lista.insertarOrdenado("prog2");
+
+		lista.insertarOrdenado("2");
+		lista.insertarOrdenado("1");
+		lista.insertarOrdenado("2");
+		lista.insertarOrdenado("3");
+		lista.insertarOrdenado("5");
+		lista.insertarOrdenado("5");
+		lista.insertarOrdenado("1");
+		lista.insertarOrdenado("2");
+		lista.insertarOrdenado(4);
+		lista.insertarOrdenado(5);
+		lista.insertarOrdenado(4);
+		lista.insertarOrdenado(7);
+		lista.insertarOrdenado(7);
+		lista.insertarOrdenado(2);
+		
+		lista.mostrarLista();
+		System.out.println("---------------------------");
+		System.out.println("posicion : " + lista.obtenerPosicion("parcial"));
+		//ComparadorIntegersDesc comparador2 = new ComparadorIntegersDesc();
+		//lista.setOrden(comparador);
+		lista.mostrarLista();
+		}
+}

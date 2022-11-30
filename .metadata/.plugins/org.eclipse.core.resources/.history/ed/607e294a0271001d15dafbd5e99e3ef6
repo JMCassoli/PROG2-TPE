@@ -1,0 +1,15 @@
+package TPE.Comparadores;
+
+import TPE.Alumno;
+
+public class ComparadorAlumnos<T> extends Comparador<T> {
+
+	@Override
+	public int compare(T o1, T o2) {
+		Alumno alumno1 = (Alumno) o1;
+		Alumno alumno2 = (Alumno) o2;
+		
+		return 0;
+	}
+
+}

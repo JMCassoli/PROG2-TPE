@@ -1,0 +1,5 @@
+package TPE.Comparadores;
+
+public class ComparadorAlumnos extends Comparador<T> {
+
+}

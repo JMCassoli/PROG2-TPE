@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 
+import TPE.Comparadores.ComparadorIntegers;
+
 public class ListaVinculada<T> implements Iterable<T> {
 	
 	private Nodo<T> primerNodo;
