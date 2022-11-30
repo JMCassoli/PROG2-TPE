@@ -1,0 +1,70 @@
+package TPE;
+
+import TPE.Comparadores.*;
+
+
+public class Main {
+
+	public static void main(String[] args) {
+<<<<<<< HEAD
+		Comparador comparador = new ComparadorAlumnos();
+		ListaVinculada lista = new ListaVinculada();
+		lista.setOrden(comparador);
+		Alumno a1 = new Alumno("juan", "perez", 1 , 1);
+		Alumno a2 = new Alumno("juan", "perez", 1 , 1);
+		
+		lista.insertarOrdenado(a1);
+		lista.insertarOrdenado(a2);
+		
+		
+		
+		
+//		lista.insertarOrdenado("es");
+//		lista.insertarOrdenado("facil");
+//		lista.insertarOrdenado("parcial");
+//		lista.insertarOrdenado("prog2");
+=======
+		ComparadorIntegers comparador = new ComparadorIntegers();
+		ListaVinculada lista = new ListaVinculada();
+		lista.setOrden(comparador);
+		lista.insertarOrdenado(4);
+		lista.insertarOrdenado(3);
+		lista.insertarOrdenado(2);
+		lista.insertarOrdenado(7);
+		lista.insertarOrdenado(5);
+		lista.insertarOrdenado(2);
+		lista.insertarOrdenado(1);
+		lista.insertarOrdenado(7);
+		lista.insertarOrdenado(5);
+		lista.insertarOrdenado(2);
+		lista.insertarOrdenado(8);
+		lista.insertarOrdenado(6);
+		lista.insertarOrdenado(9);
+		lista.mostrarLista();
+	}
+	
+>>>>>>> 99795a6df14794980da25547b213a936c114f1de
+
+//		lista.insertarOrdenado(2);
+//		lista.insertarOrdenado(1);
+//		lista.insertarOrdenado(2);
+//		lista.insertarOrdenado(3);
+//		lista.insertarOrdenado(5);
+//		lista.insertarOrdenado(5);
+//		lista.insertarOrdenado(1);
+//		lista.insertarOrdenado(2);
+//		lista.insertarOrdenado(4);
+//		lista.insertarOrdenado(5);
+//		lista.insertarOrdenado(4);
+//		lista.insertarOrdenado(7);
+//		lista.insertarOrdenado(7);
+//		lista.insertarOrdenado(2);
+		
+		lista.mostrarLista();
+		System.out.println("---------------------------");
+		System.out.println("posicion : " + lista.obtenerPosicion("parcial"));
+		//ComparadorIntegersDesc comparador2 = new ComparadorIntegersDesc();
+		//lista.setOrden(comparador);
+		lista.mostrarLista();
+		}
+}

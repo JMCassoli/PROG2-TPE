@@ -1,0 +1,42 @@
+package TPE;
+
+import java.util.Iterator;
+
+public class IteradorNodo<T> implements Iterator<T> {
+	
+	private Nodo<T> actual;
+	
+	public IteradorNodo(Nodo<T> primerNodo) {
+		this.actual= primerNodo;
+	}
+	
+	public void remove() {
+		this.actual.setSiguienteNodo(this.actual.getSiguienteNodo().getSiguienteNodo());
+	}
+	
+	@Override
+	public boolean hasNext() {
+		return (this.actual!=null);
+	}
+
+	@Override
+	public T next() {
+		T result = actual.getValor();
+		this.actual = actual.getSiguienteNodo();
+		return result;
+	}
+<<<<<<< HEAD
+	
+	
+=======
+
+	public Nodo<T> getActual() {
+		return actual;
+	}
+
+>>>>>>> 99795a6df14794980da25547b213a936c114f1de
+	public void setActual(Nodo<T> siguiente) {
+		this.actual = siguiente;
+	}
+	
+}
