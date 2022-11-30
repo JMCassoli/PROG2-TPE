@@ -1,57 +1,118 @@
 package TPE;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
-
 
 public class ListaVinculada<T> implements Iterable<T> {
 	
 	private Nodo<T> primerNodo;
 	private Comparator<T> orden;
-	private Nodo<T> anteriorNodo;
-	private IteradorNodo iterador;
-	
-	public ListaVinculada(Comparator<T> orden) {
-		this.primerNodo=null;
-		this.orden=orden;
-		this.iterador = (IteradorNodo) iterator();
+	private int size;
+
+	public ListaVinculada() {
+		this.primerNodo = null;
+		this.orden = new ComparadorIntegers();
+		this.size = 0;
+
+	}
+
+	public void insertarOrdenado(T nuevoValor) {
+		this.size++;
+		Nodo<T> nuevo = new Nodo(nuevoValor);
+		if(this.primerNodo==null) {
+			this.primerNodo= nuevo;
+		} else {
+			
+			Nodo<T> nodoAnterior = null;
+			Nodo<T> aux = this.primerNodo;
+			while(aux!=null && orden.compare(nuevoValor, aux.getValor()) > 0) {
+				nodoAnterior = aux;
+				aux = aux.getSiguienteNodo();
+			}
+			if(aux == null) {
+				nodoAnterior.setSiguienteNodo(nuevo);
+			} else {
+				nuevo.setSiguienteNodo(aux);
+				if(aux == this.primerNodo) {
+					this.primerNodo=nuevo;
+				} else {
+					nodoAnterior.setSiguienteNodo(nuevo);
+				}
+			}
+			
+		}
 	}
 	
-	public void insertarOrdenado(T nuevoValor) {
-		if(primerNodo == null) {
-			primerNodo = new Nodo<T>(nuevoValor);
-			System.out.println(iterador.getSiguiente());
-		} else {
-			while (this.iterador.hasNext()) {
-				System.out.println("1");
-				this.iterador.next();
+	public int obtenerPosicion(T valor) {
+		Iterator<T> it = iterator();
+
+		int i=0;
+		for(T n : this) {
+			if(n.equals(valor)) {
+				return i+1;
+			}
+			i++;
+		}
+		return -1;
+	}
+	
+	public void borrarOcurrencias(T valor) {
+		Iterator<T> it = iterator();
+
+		int i=0;
+		for(T n : this) {
+			if(n.equals(valor)) {
+				borrar(i+1);
+			} else {
+				i++;
 			}
 		}
 	}
-		
-	public void imprimir() {
-		for (T n : this) {
-			System.out.println(1);
+	
+	public void borrar(int pos) {
+		Iterator<T> it = iterator();
+		int i=0;
+		while(it.hasNext() && i<pos-2 ) {
+			it.next();
+			i++;
 		}
+		if(i==0) {
+			this.primerNodo = this.primerNodo.getSiguienteNodo(); 
+		}else {			
+		it.remove();
+		}
+		this.size--;
 		
+	}
+
+	public void mostrarLista() {
+		Iterator<T> it = iterator();
+		while (it.hasNext()) {
+			T n = it.next();
+			System.out.println(n);
+		}
+	}
+
+	public void ordenarLista() {
+		
+		ListaVinculada<T> result = new ListaVinculada();
+		result.setOrden(this.orden);
+		for(T n: this) {
+			result.insertarOrdenado(n);
+		}
+		this.primerNodo=result.primerNodo;
 	}
 	
-	public void ordenar() {
-		
-	}
+	
 
 	@Override
 	public Iterator<T> iterator() {
-		IteradorNodo it = new IteradorNodo(this.primerNodo);
-		this.setIterador(it);
+		IteradorNodo<T> it = new IteradorNodo<T>(this.primerNodo);
 		return it;
 	}
 
-	public void setOrden(Comparator<T> orden) {
-		this.orden = orden;
-	}
-
-	public Nodo<T> getPrimerNodo() {
+	protected Nodo<T> getPrimerNodo() {
 		return primerNodo;
 	}
 
@@ -59,14 +120,31 @@ public class ListaVinculada<T> implements Iterable<T> {
 		this.primerNodo = primerNodo;
 	}
 
-	public Iterator<T> getIterador() {
-		return iterador;
-	}
+	public void setOrden(Comparator comparador) {
+		this.orden = comparador;
+		if(this.primerNodo!=null) {
+			this.ordenarLista();			
+		}
 
-	public void setIterador(IteradorNodo<T> iterador) {
-		this.iterador = iterador;
+	}		
+
+	protected Nodo obtenerNodo(int pos){
+		if(pos < 0 || pos >= this.getSize() ){
+			return null;
+		}
+		else{
+			int contador = 0;
+			Nodo buscado = this.primerNodo;
+				while(contador < pos){
+					buscado = buscado.getSiguienteNodo();
+					contador++;
+				}
+		return buscado;
+		}
 	}
 	
-	
+	public int getSize() {
+		return size;
+	}
 
 }

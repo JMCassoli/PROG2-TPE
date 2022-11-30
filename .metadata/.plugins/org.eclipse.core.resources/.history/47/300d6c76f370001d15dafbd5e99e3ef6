@@ -1,0 +1,113 @@
+package TPE;
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+
+public class ListaVinculada<T> implements Iterable<T> {
+	
+	private Nodo<T> primerNodo;
+	private Comparator<T> orden;
+	private int size;
+
+	public ListaVinculada() {
+		this.primerNodo = null;
+		this.orden = new ComparadorIntegers();
+		this.size = 0;
+
+	}
+
+	public void insertarOrdenado(T nuevoValor) {
+		this.size++;
+		Nodo<T> nuevo = new Nodo(nuevoValor);
+		if(this.primerNodo==null) {
+			this.primerNodo= nuevo;
+		} else {
+			
+			Nodo<T> nodoAnterior = null;
+			Nodo<T> aux = this.primerNodo;
+			while(aux!=null && orden.compare(nuevoValor, aux.getValor()) > 0) {
+				nodoAnterior = aux;
+				aux = aux.getSiguienteNodo();
+			}
+			if(aux == null) {
+				nodoAnterior.setSiguienteNodo(nuevo);
+			} else {
+				nuevo.setSiguienteNodo(aux);
+				if(aux == this.primerNodo) {
+					this.primerNodo=nuevo;
+				} else {
+					nodoAnterior.setSiguienteNodo(nuevo);
+				}
+			}
+			
+		}
+	}
+	
+	public void borrar(int pos) {
+		Iterator<T> it = iterator();
+		//while()
+	}
+
+	public void mostrarLista() {
+		Iterator<T> it = iterator();
+		while (it.hasNext()) {
+			T n = it.next();
+			System.out.println(n);
+		}
+	}
+
+	public void ordenarLista() {
+		
+		ListaVinculada<T> result = new ListaVinculada();
+		result.setOrden(this.orden);
+		for(T n: this) {
+			result.insertarOrdenado(n);
+		}
+		this.primerNodo=result.primerNodo;
+	}
+	
+	
+
+	@Override
+	public Iterator<T> iterator() {
+		IteradorNodo<T> it = new IteradorNodo<T>(this.primerNodo);
+		return it;
+	}
+
+	protected Nodo<T> getPrimerNodo() {
+		return primerNodo;
+	}
+
+	public void setPrimerNodo(Nodo<T> primerNodo) {
+		this.primerNodo = primerNodo;
+	}
+
+	public void setOrden(Comparator comparador) {
+		this.orden = comparador;
+		if(this.primerNodo!=null) {
+			this.ordenarLista();			
+		}
+
+	}		
+
+	protected Nodo obtenerNodo(int pos){
+		if(pos < 0 || pos >= this.getSize() ){
+			return null;
+		}
+		else{
+			int contador = 0;
+			Nodo buscado = this.primerNodo;
+				while(contador < pos){
+					buscado = buscado.getSiguienteNodo();
+					contador++;
+				}
+		return buscado;
+		}
+	}
+	
+	public int getSize() {
+		return size;
+	}
+
+}

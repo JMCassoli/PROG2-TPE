@@ -2,11 +2,13 @@ package TPE;
 
 import java.util.Comparator;
 
-public class ComparadorIntegers implements Comparator<Object> {
+public class ComparadorIntegers<T> implements Comparator<T> {
+	@Override
+	public int compare(T o1, T o2) {
+		int aux1= (int)o1;
+		int aux2=(int)o2;
+		return aux1-aux2;
+	}
 
-    public int compare(Object a,Object b) {
-    	Integer aux = (Integer)((Nodo)a).getValor();
-    	Integer baux = (Integer)b;
-    	return aux.compareTo(baux);    	
-    }
+
 }

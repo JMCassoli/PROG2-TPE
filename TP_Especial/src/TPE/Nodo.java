@@ -13,6 +13,10 @@ public class Nodo<T> {
 	public Nodo<T> getSiguienteNodo() {
 		return siguienteNodo;
 	}
+	
+	public void setValor(T valor) {
+		this.valor = valor;
+	}
 
 	public void setSiguienteNodo(Nodo<T> nodo) {
 		this.siguienteNodo = nodo;
@@ -27,3 +31,4 @@ public class Nodo<T> {
 	}
 
 }
+    

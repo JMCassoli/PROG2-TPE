@@ -1,0 +1,203 @@
+package TPE;
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+
+public class ListaVinculada<T> implements Iterable<T> {
+
+	private Nodo<T> primerNodo;
+	private Comparator<T> orden;
+	private int size;
+
+	public ListaVinculada() {
+		this.primerNodo = null;
+		this.orden = null;
+		this.size = 0;
+
+	}
+
+	public void insertarOrdenado(T nuevoValor) {
+		this.size++;
+		Nodo<T> nuevo = new Nodo(nuevoValor);
+		if(this.primerNodo==null) {
+			this.primerNodo= nuevo;
+		} else {
+			
+			Nodo<T> nodoAnterior = null;
+			Nodo<T> aux = this.primerNodo;
+			while(aux!=null && orden.compare(nuevoValor, aux.getValor()) > 0) {
+				nodoAnterior = aux;
+				aux = aux.getSiguienteNodo();
+			}
+			if(aux == null) {
+				nodoAnterior.setSiguienteNodo(nuevo);
+			} else {
+				nuevo.setSiguienteNodo(aux);
+				if(aux == this.primerNodo) {
+					this.primerNodo=nuevo;
+				} else {
+					nodoAnterior.setSiguienteNodo(nuevo);
+				}
+			}
+			
+		}
+		
+		
+		
+//		size++;
+//		Nodo<T> nodoAux = new Nodo<T>(nuevoValor, null);
+//		IteradorNodo<T> it = new IteradorNodo<T>(this.primerNodo);
+//		Nodo<T> nodoanterior = null;
+//		Nodo<T> nodoposterior = primerNodo;
+//		while (true) {
+//			if (nodoposterior == null) {
+//				if (nodoanterior == null) {
+//					primerNodo = nodoAux;
+//					break;
+//				}
+//				nodoanterior.setSiguienteNodo(nodoAux);
+//				break;
+//			} else if (orden.compare(nuevoValor, nodoposterior.getValor()) > 0) {
+//				nodoanterior = nodoposterior;
+//				nodoposterior = nodoposterior.getSiguienteNodo();
+//
+//			} else if (orden.compare(nuevoValor, nodoposterior.getValor()) <= 0) {
+//				if (nodoanterior == null) {
+//					nodoAux.setSiguienteNodo(primerNodo);
+//					primerNodo = nodoAux;
+//					break;
+//				}
+//				nodoanterior.setSiguienteNodo(nodoAux);
+//				nodoAux.setSiguienteNodo(nodoposterior);
+//				break;
+//			}
+//		}
+	}
+
+	public void mostrarLista() {
+		IteradorNodo<T> it = new IteradorNodo<T>(this.primerNodo);
+		while (it.hasNext()) {
+			T n = it.next();
+			System.out.println(n);
+		}
+	}
+
+	public void ordenarLista() {
+		
+		
+		
+		
+		
+		
+//		for (int i = 0; i < this.size; i++) {
+//			Nodo<T> nodoanterior = null;
+//			Nodo<T> nodoactual = this.primerNodo;
+//			Nodo<T> nodosiguiente = this.primerNodo.getSiguienteNodo();
+//			int repeticiones = this.size;
+//			for (int j = 0; j < repeticiones; j++) {
+//				if (nodoanterior == null && orden.compare(nodoactual.getValor(), nodosiguiente.getValor()) > 0) {
+//					nodoactual.setSiguienteNodo(nodosiguiente.getSiguienteNodo());
+//					nodosiguiente.setSiguienteNodo(nodoactual);
+//					setPrimerNodo(nodosiguiente);
+//					nodosiguiente = nodoactual;
+//					nodoactual = this.primerNodo;
+//				} else if (orden.compare(nodoactual.getValor(), nodosiguiente.getValor()) > 0) {
+//					nodoanterior.setSiguienteNodo(nodosiguiente);
+//					nodoactual.setSiguienteNodo(nodosiguiente.getSiguienteNodo());
+//					nodosiguiente.setSiguienteNodo(nodoactual);
+//
+//				}
+//				nodoanterior = nodoactual;
+//				nodoactual = nodosiguiente;
+//				nodosiguiente = nodosiguiente.getSiguienteNodo();
+//			}
+//			repeticiones--;
+//		}
+	}
+	
+	
+
+	@Override
+	public Iterator<T> iterator() {
+		IteradorNodo<T> it = new IteradorNodo<T>(this.primerNodo);
+		return it;
+	}
+
+	public Nodo<T> getPrimerNodo() {
+		return primerNodo;
+	}
+
+	public void setPrimerNodo(Nodo<T> primerNodo) {
+		this.primerNodo = primerNodo;
+	}
+
+	public void setOrden(Comparator comparador) {
+		this.orden = comparador;
+		if(this.primerNodo!=null) {
+			this.reOrdenar();			
+		}
+
+	}
+
+	private void reOrdenar() {
+			Nodo<T> nodoAnterior=null;
+			Nodo<T> raiz = this.primerNodo;
+			Nodo<T> siguiente = this.primerNodo.getSiguienteNodo();
+			
+	for(int i = 0; i < this.getSize()-1; i++) {
+		System.out.println(this.orden.compare(raiz.getValor(), siguiente.getValor()) > 0);
+				if(this.orden.compare(raiz.getValor(), siguiente.getValor()) > 0) {
+					System.out.println("anterior : "+ nodoAnterior);
+					System.out.println("raiz : "+ raiz);
+					System.out.println("siguiente : "+ siguiente);
+					if (nodoAnterior == null) {
+						Nodo<T> aux = new Nodo<T> (siguiente.getValor());
+						aux.setSiguienteNodo(siguiente.getSiguienteNodo());
+						raiz.setSiguienteNodo(siguiente.getSiguienteNodo());
+						siguiente.setSiguienteNodo(raiz);
+						nodoAnterior=siguiente;
+						this.setPrimerNodo(aux);
+						siguiente = raiz.getSiguienteNodo();						
+				} else {
+					Nodo<T> aux = new Nodo<T> (siguiente.getValor());
+					aux.setSiguienteNodo(siguiente.getSiguienteNodo());
+					raiz.setSiguienteNodo(siguiente.getSiguienteNodo());
+					siguiente.setSiguienteNodo(raiz);
+					nodoAnterior=siguiente;
+					siguiente = raiz.getSiguienteNodo();
+					}
+					
+				} else {
+				Nodo<T> aux = raiz;
+				raiz = siguiente;
+				siguiente = raiz.getSiguienteNodo();
+				nodoAnterior = aux;
+				}		
+				
+		}
+			
+			
+			
+	}
+
+	public Nodo obtenerNodo(int pos){
+		if(pos < 0 || pos >= this.getSize() ){
+			return null;
+		}
+		else{
+			int contador = 0;
+			Nodo buscado = this.primerNodo;
+				while(contador < pos){
+					buscado = buscado.getSiguienteNodo();
+					contador++;
+				}
+		return buscado;
+		}
+	}
+	
+	public int getSize() {
+		return size;
+	}
+
+}
