@@ -114,6 +114,9 @@ public class ListaVinculada<T> implements Iterable<T> {
 		return it;
 	}
 
+	protected Nodo<T> getPrimerNodo() {
+		return primerNodo;
+	}
 
 	public void setPrimerNodo(Nodo<T> primerNodo) {
 		this.primerNodo = primerNodo;

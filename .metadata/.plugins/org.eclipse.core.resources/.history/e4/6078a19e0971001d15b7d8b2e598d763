@@ -114,6 +114,9 @@ public class ListaVinculada<T> implements Iterable<T> {
 		return it;
 	}
 
+	protected Nodo<T> getPrimerNodo() {
+		return primerNodo;
+	}
 
 	public void setPrimerNodo(Nodo<T> primerNodo) {
 		this.primerNodo = primerNodo;
@@ -126,6 +129,21 @@ public class ListaVinculada<T> implements Iterable<T> {
 		}
 
 	}		
+
+	protected Nodo obtenerNodo(int pos){
+		if(pos < 0 || pos >= this.getSize() ){
+			return null;
+		}
+		else{
+			int contador = 0;
+			Nodo buscado = this.primerNodo;
+				while(contador < pos){
+					buscado = buscado.getSiguienteNodo();
+					contador++;
+				}
+		return buscado;
+		}
+	}
 	
 	public int getSize() {
 		return size;
