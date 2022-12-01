@@ -1,0 +1,135 @@
+package TPE;
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+
+import TPE.Comparadores.*;
+import TPE.Comparadores.ComparadorIntegers;
+
+public class ListaVinculada<T> implements Iterable<T> {
+	
+	private Nodo<T> primerNodo;
+	private Comparador<T> orden;
+	private int size;
+
+	public ListaVinculada() {
+		this.primerNodo = null;
+		this.orden = new ComparadorCantAlumnos();
+		this.size = 0;
+
+	}
+
+	public void insertarOrdenado(T nuevoValor) {
+		this.size++;
+		Nodo<T> nuevo = new Nodo(nuevoValor);
+		if(this.primerNodo==null) {
+			this.primerNodo= nuevo;
+		} else {
+			
+			Nodo<T> nodoAnterior = null;
+			Nodo<T> aux = this.primerNodo;
+			while(aux!=null && orden.compare(nuevoValor, aux.getValor()) > 0) {
+				nodoAnterior = aux;
+				aux = aux.getSiguienteNodo();
+			}
+			if(aux == null) {
+				nodoAnterior.setSiguienteNodo(nuevo);
+			} else {
+				nuevo.setSiguienteNodo(aux);
+				if(aux == this.primerNodo) {
+					this.primerNodo=nuevo;
+				} else {
+					nodoAnterior.setSiguienteNodo(nuevo);
+				}
+			}
+			
+		}
+	}
+	
+	public int obtenerPosicion(T valor) {
+		Iterator<T> it = iterator();
+
+		int i=0;
+		for(T n : this) {
+			if(n.equals(valor)) {
+				return i+1;
+			}
+			i++;
+		}
+		return -1;
+	}
+	
+	public void borrarOcurrencias(T valor) {
+		Iterator<T> it = iterator();
+
+		int i=0;
+		for(T n : this) {
+			if(n.equals(valor)) {
+				borrar(i+1);
+			} else {
+				i++;
+			}
+		}
+	}
+	
+	public void borrar(int pos) {
+		Iterator<T> it = iterator();
+		int i=0;
+		while(it.hasNext() && i<pos-2 ) {
+			it.next();
+			i++;
+		}
+		if(i==0) {
+			this.primerNodo = this.primerNodo.getSiguienteNodo(); 
+		}else {			
+		it.remove();
+		}
+		this.size--;
+		
+	}
+
+	public void mostrarLista() {
+		Iterator<T> it = iterator();
+		while (it.hasNext()) {
+			T n = it.next();
+			System.out.println(n);
+		}
+	}
+
+	public void ordenarLista() {
+		
+		ListaVinculada<T> result = new ListaVinculada();
+		result.setOrden(this.orden);
+		for(T n: this) {
+			result.insertarOrdenado(n);
+		}
+		this.primerNodo=result.primerNodo;
+	}
+	
+	
+
+	@Override
+	public Iterator<T> iterator() {
+		IteradorNodo<T> it = new IteradorNodo<T>(this.primerNodo);
+		return it;
+	}
+
+
+	public void setPrimerNodo(Nodo<T> primerNodo) {
+		this.primerNodo = primerNodo;
+	}
+
+	public void setOrden(Comparador comparador) {
+		this.orden = comparador;
+		if(this.primerNodo!=null) {
+			this.ordenarLista();			
+		}
+
+	}		
+	
+	public int getSize() {
+		return size;
+	}
+
+}

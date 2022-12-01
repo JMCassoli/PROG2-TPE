@@ -1,0 +1,47 @@
+package TPE;
+
+import TPE.Comparadores.*;
+
+public class Comision extends ElementoFacultad {
+
+	private ListaVinculada<ElementoFacultad> elementos;
+	private String nombre;
+	
+	public Comision(String nombre) {
+		this.nombre=nombre;
+		elementos = new ListaVinculada(new ComparadorCantAlumnos());
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}	
+	
+	public void addElemento(ElementoFacultad nuevo) {
+		this.elementos.insertarOrdenado(nuevo);
+	}
+	
+	public String toString() {
+		return "Comision: "+ this.nombre;
+		
+	}
+	
+	public void imprimir() {
+		for(ElementoFacultad elem: this.elementos) {
+			elem.imprimir();
+		}
+	}
+
+	@Override
+	public int getCantidadAlumnos() {
+		int result=0;
+		for(ElementoFacultad elem : this.elementos) {
+			result += elem.getCantidadAlumnos();
+		}
+		return result;
+	}
+	
+}

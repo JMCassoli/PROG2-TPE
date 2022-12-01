@@ -2,7 +2,7 @@ package TPE;
 
 import java.util.ArrayList;
 
-public class Alumno {
+public class Alumno extends ElementoFacultad {
 	
 	private String nombre, apellido;
 	private int DNI, edad;
@@ -59,6 +59,18 @@ public class Alumno {
 	public String toString() {
 		String result = ("nombre: " + this.getNombre() + " apellido: " + this.getApellido() + " DNI:" + this.getDNI());
 		return result;
+	}
+
+	@Override
+	public int getCantidadAlumnos() {
+		// TODO Auto-generated method stub
+		return 1;
+	}
+
+	@Override
+	public void imprimir() {
+		System.out.println(this);
+		
 	}
 	
 }

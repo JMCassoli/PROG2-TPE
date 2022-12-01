@@ -1,0 +1,33 @@
+package TPE;
+
+public class Comision extends ElementoFacultad {
+
+	private ListaVinculada<ElementoFacultad> elementos;
+	private String nombre;
+	
+	public Comision(String nombre) {
+		this.nombre=nombre;
+		elementos = new ListaVinculada();
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}	
+	
+	public void addElemento(ElementoFacultad nuevo) {
+		
+	}
+
+	@Override
+	public int getCantidadAlumnos() {
+		for(ElementoFacultad elem : this.elementos) {
+			
+		}
+		return 0;
+	}
+	
+}

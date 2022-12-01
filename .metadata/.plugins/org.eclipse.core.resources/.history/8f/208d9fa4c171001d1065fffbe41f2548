@@ -1,0 +1,126 @@
+package TPE;
+
+import TPE.Comparadores.*;
+
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		// CONSIGNA A
+		
+		ListaVinculada<Integer> listaNumeros = new ListaVinculada(new ComparadorIntegers());
+		listaNumeros.insertarOrdenado(10);
+		listaNumeros.insertarOrdenado(21);
+		listaNumeros.insertarOrdenado(1);
+		listaNumeros.insertarOrdenado(5);
+		listaNumeros.insertarOrdenado(11);
+		
+		System.out.println("----------------------------------");
+		//CONSIGNA B
+		
+		for(Integer elem: listaNumeros) {
+			System.out.println(elem);
+		}
+		
+		
+		System.out.println("----------------------------------");		
+		//CONSIGNA C
+		
+		listaNumeros.borrar(1);
+		listaNumeros.borrarOcurrencias(5);
+		listaNumeros.borrarOcurrencias(11);
+		
+		
+		listaNumeros.mostrarLista();
+		
+		System.out.println("----------------------------------");
+		//CONSIGNA D
+		
+		ListaVinculada<String> listaString = new ListaVinculada(new ComparadorStrings());
+		listaString.insertarOrdenado("es");
+		listaString.insertarOrdenado("facil");
+		listaString.insertarOrdenado("parcial");
+		listaString.insertarOrdenado("prog2");
+		
+		//CONSIGNA E
+		
+		listaString.mostrarLista();
+		
+		System.out.println("----------------------------------");
+		//CONSIGNA F
+		
+		System.out.println("posicion: " + listaString.obtenerPosicion("parcial"));
+		
+		System.out.println("----------------------------------");
+		//CONSIGNA G
+		
+		System.out.println("posicion: " + listaString.obtenerPosicion("recuperatorio"));
+		
+		System.out.println("----------------------------------");
+		//CONSIGNA H
+		
+		listaString.setOrden(new ComparadorNegado(new ComparadorStrings()));
+		listaString.mostrarLista();
+		
+		System.out.println("----------------------------------");
+		//CONSIGNA I
+		
+		Alumno a1 = new Alumno("Federico", "Lopez", 35999888, 18);
+		a1.addInteres("redes");
+		a1.addInteres("php");
+		a1.addInteres("java");
+		a1.addInteres("python");
+		
+		Alumno a2 = new Alumno("Juana", "Garcia", 27123455, 18);
+		a2.addInteres("programacion");
+		a2.addInteres("php");
+		a2.addInteres("java");
+		
+		Alumno a3 = new Alumno("John", "Doe", 12000000, 18);
+		a3.addInteres("intercambio");
+		
+		Alumno a4 = new Alumno("Mora", "Diaz", 37124425, 18);
+		a4.addInteres("psicologia");
+		a4.addInteres("Freud");
+		
+		Alumno a5 = new Alumno("Flora", "Rivas", 34555111, 18);
+		a5.addInteres("historia");
+		a5.addInteres("antigua");
+		
+		Alumno a6 = new Alumno("Martin", "Gomez", 34111222, 18);
+		a6.addInteres("romanos");
+		a6.addInteres("egipcios");
+		a6.addInteres("griegos");
+
+		
+		Alumno a7 = new Alumno("Roman", "Bazan", 32555111, 18);
+		a7.addInteres("argentina");
+
+		Comision c1 = new Comision("historia");
+		c1.addElemento(a5);
+		c1.addElemento(a6);
+		c1.addElemento(a7);
+		
+		Comision c2 = new Comision("humanas");
+		c2.addElemento(c1);
+		c2.addElemento(a4);
+		
+		Comision c3 = new Comision("exactas");
+		c3.addElemento(a1);
+		c3.addElemento(a2);
+		
+		Comision c4 = new Comision("unicen");
+		c4.addElemento(c3);
+		c4.addElemento(c2);
+		c4.addElemento(a3);
+		
+		c4.imprimir();
+		
+		
+		
+		
+		
+		
+		}
+}

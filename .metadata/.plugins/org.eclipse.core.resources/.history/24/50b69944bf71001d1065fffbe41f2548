@@ -1,0 +1,63 @@
+package TPE;
+
+import TPE.Comparadores.*;
+
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		// CONSIGNA A
+		
+		ListaVinculada<Integer> listaNumeros = new ListaVinculada(new ComparadorIntegers());
+		listaNumeros.insertarOrdenado(10);
+		listaNumeros.insertarOrdenado(21);
+		listaNumeros.insertarOrdenado(1);
+		listaNumeros.insertarOrdenado(5);
+		listaNumeros.insertarOrdenado(11);
+		
+		//CONSIGNA B
+		
+		for(Integer elem: listaNumeros) {
+			System.out.println(elem);
+		}
+		
+		//CONSIGNA C
+		
+		listaNumeros.borrar(1);
+		listaNumeros.borrarOcurrencias(5);
+		listaNumeros.borrarOcurrencias(11);
+		
+		
+		listaNumeros.mostrarLista();
+		
+		//CONSIGNA D
+		
+		ListaVinculada<String> listaString = new ListaVinculada(new ComparadorStrings());
+		listaString.insertarOrdenado("es");
+		listaString.insertarOrdenado("facil");
+		listaString.insertarOrdenado("parcial");
+		listaString.insertarOrdenado("prog2");
+		
+		//CONSIGNA E
+		listaString.mostrarLista();
+		
+		//CONSIGNA F
+		
+		System.out.println("posicion: " + listaString.obtenerPosicion("parcial"));
+		
+		//CONSIGNA G
+		
+		System.out.println("posicion: " + listaString.obtenerPosicion("recuperatorio"));
+		
+		//CONSIGNA H
+		
+		listaString.setOrden(new ComparadorNegado(new ComparadorStrings()));
+		listaString.mostrarLista();
+		
+		//CONSIGNA I
+		
+		Alumno a1 = new Alumno("Federico", "lopez", 35999888, 18);
+		
+		}
+}

@@ -1,0 +1,7 @@
+package TPE;
+
+public class ElementoFacultad {
+
+	public abstract int getCantidadAlumnos();
+	
+}

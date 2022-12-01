@@ -4,17 +4,17 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 
-import TPE.Comparadores.ComparadorIntegers;
+import TPE.Comparadores.*;
 
 public class ListaVinculada<T> implements Iterable<T> {
 	
 	private Nodo<T> primerNodo;
-	private Comparator<T> orden;
+	private Comparador<T> orden;
 	private int size;
 
-	public ListaVinculada() {
+	public ListaVinculada(Comparador<T> comp) {
 		this.primerNodo = null;
-		this.orden = new ComparadorIntegers();
+		this.orden = comp;
 		this.size = 0;
 
 	}
@@ -62,10 +62,10 @@ public class ListaVinculada<T> implements Iterable<T> {
 	public void borrarOcurrencias(T valor) {
 		Iterator<T> it = iterator();
 
-		int i=0;
+		int i=1;
 		for(T n : this) {
 			if(n.equals(valor)) {
-				borrar(i+1);
+				borrar(i);
 			} else {
 				i++;
 			}
@@ -75,11 +75,11 @@ public class ListaVinculada<T> implements Iterable<T> {
 	public void borrar(int pos) {
 		Iterator<T> it = iterator();
 		int i=0;
-		while(it.hasNext() && i<pos-2 ) {
+		while(it.hasNext() && i<pos-2) {
 			it.next();
 			i++;
 		}
-		if(i==0) {
+		if(pos==1) {
 			this.primerNodo = this.primerNodo.getSiguienteNodo(); 
 		}else {			
 		it.remove();
@@ -98,8 +98,7 @@ public class ListaVinculada<T> implements Iterable<T> {
 
 	public void ordenarLista() {
 		
-		ListaVinculada<T> result = new ListaVinculada();
-		result.setOrden(this.orden);
+		ListaVinculada<T> result = new ListaVinculada(this.orden);
 		for(T n: this) {
 			result.insertarOrdenado(n);
 		}
@@ -119,7 +118,7 @@ public class ListaVinculada<T> implements Iterable<T> {
 		this.primerNodo = primerNodo;
 	}
 
-	public void setOrden(Comparator comparador) {
+	public void setOrden(Comparador comparador) {
 		this.orden = comparador;
 		if(this.primerNodo!=null) {
 			this.ordenarLista();			

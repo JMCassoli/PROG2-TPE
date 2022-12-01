@@ -6,43 +6,154 @@ import TPE.Comparadores.*;
 public class Main {
 
 	public static void main(String[] args) {
-		Comparador comparador = new ComparadorAlumnos();
-		ListaVinculada lista = new ListaVinculada();
-		lista.setOrden(comparador);
-		Alumno a1 = new Alumno("juan", "perez", 1 , 1);
-		Alumno a2 = new Alumno("juan", "perez", 1 , 1);
 		
-		lista.insertarOrdenado(a1);
-		lista.insertarOrdenado(a2);
+		// CONSIGNA A
+		
+		ListaVinculada<Integer> listaNumeros = new ListaVinculada(new ComparadorIntegers());
+		listaNumeros.insertarOrdenado(10);
+		listaNumeros.insertarOrdenado(21);
+		listaNumeros.insertarOrdenado(1);
+		listaNumeros.insertarOrdenado(5);
+		listaNumeros.insertarOrdenado(11);
+		
+		System.out.println("----------------------------------");
+		//CONSIGNA B
+		
+		for(Integer elem: listaNumeros) {
+			System.out.println(elem);
+		}
 		
 		
+		System.out.println("----------------------------------");		
+		//CONSIGNA C
+		
+		listaNumeros.borrar(1);
+		listaNumeros.borrarOcurrencias(5);
+		listaNumeros.borrarOcurrencias(11);
 		
 		
-//		lista.insertarOrdenado("es");
-//		lista.insertarOrdenado("facil");
-//		lista.insertarOrdenado("parcial");
-//		lista.insertarOrdenado("prog2");
+		listaNumeros.mostrarLista();
+		
+		System.out.println("----------------------------------");
+		//CONSIGNA D
+		
+		ListaVinculada<String> listaString = new ListaVinculada(new ComparadorStrings());
+		listaString.insertarOrdenado("es");
+		listaString.insertarOrdenado("facil");
+		listaString.insertarOrdenado("parcial");
+		listaString.insertarOrdenado("prog2");
+		
+		//CONSIGNA E
+		
+		listaString.mostrarLista();
+		
+		System.out.println("----------------------------------");
+		//CONSIGNA F
+		
+		System.out.println("posicion: " + listaString.obtenerPosicion("parcial"));
+		
+		System.out.println("----------------------------------");
+		//CONSIGNA G
+		
+		System.out.println("posicion: " + listaString.obtenerPosicion("recuperatorio"));
+		
+		System.out.println("----------------------------------");
+		//CONSIGNA H
+		
+		listaString.setOrden(new ComparadorNegado(new ComparadorStrings()));
+		listaString.mostrarLista();
+		
+		System.out.println("----------------------------------");
+		//CONSIGNA I
+		
+		Comparador comparadorConsigna = new ComparadorNegado(new ComparadorCantAlumnos());
+		
+		Alumno a1 = new Alumno("Federico", "Lopez", 35999888, 18);
+		a1.addInteres("redes");
+		a1.addInteres("php");
+		a1.addInteres("java");
+		a1.addInteres("python");
+		
+		Alumno a2 = new Alumno("Juana", "Garcia", 27123455, 18);
+		a2.addInteres("programacion");
+		a2.addInteres("php");
+		a2.addInteres("java");
+		
+		Alumno a3 = new Alumno("John", "Doe", 12000000, 18);
+		a3.addInteres("intercambio");
+		
+		Alumno a4 = new Alumno("Mora", "Diaz", 37124425, 18);
+		a4.addInteres("psicologia");
+		a4.addInteres("Freud");
+		
+		Alumno a5 = new Alumno("Flora", "Rivas", 34555111, 18);
+		a5.addInteres("historia");
+		a5.addInteres("antigua");
+		
+		Alumno a6 = new Alumno("Martin", "Gomez", 34111222, 18);
+		a6.addInteres("romanos");
+		a6.addInteres("egipcios");
+		a6.addInteres("griegos");
 
-//		lista.insertarOrdenado(2);
-//		lista.insertarOrdenado(1);
-//		lista.insertarOrdenado(2);
-//		lista.insertarOrdenado(3);
-//		lista.insertarOrdenado(5);
-//		lista.insertarOrdenado(5);
-//		lista.insertarOrdenado(1);
-//		lista.insertarOrdenado(2);
-//		lista.insertarOrdenado(4);
-//		lista.insertarOrdenado(5);
-//		lista.insertarOrdenado(4);
-//		lista.insertarOrdenado(7);
-//		lista.insertarOrdenado(7);
-//		lista.insertarOrdenado(2);
 		
-		lista.mostrarLista();
-		System.out.println("---------------------------");
-		System.out.println("posicion : " + lista.obtenerPosicion("parcial"));
-		//ComparadorIntegersDesc comparador2 = new ComparadorIntegersDesc();
-		//lista.setOrden(comparador);
-		lista.mostrarLista();
+		Alumno a7 = new Alumno("Roman", "Bazan", 32555111, 18);
+		a7.addInteres("argentina");
+
+		Comision c1 = new Comision("historia", comparadorConsigna);
+		c1.addElemento(a5);
+		c1.addElemento(a6);
+		c1.addElemento(a7);
+		
+		Comision c2 = new Comision("humanas", comparadorConsigna);
+		c2.addElemento(c1);
+		c2.addElemento(a4);
+		
+		Comision c3 = new Comision("exactas", comparadorConsigna);
+		c3.addElemento(a1);
+		c3.addElemento(a2);
+		
+		Comision c4 = new Comision("unicen", comparadorConsigna);
+		c4.addElemento(c3);
+		c4.addElemento(c2);
+		c4.addElemento(a3);
+		
+		c4.imprimir();
+		
+		System.out.println("------------------");
+		
+		Alumno a8 = new Alumno("Juan", "Juarez", 33222444, 18);
+		a8.addInteres("sucesiones");
+		a8.addInteres("algebra");
+		
+		Alumno a9 = new Alumno("Julio", "Cesar", 33222111, 18);
+		a9.addInteres("sucesiones");
+		a9.addInteres("algebra");
+		
+		Alumno a10 = new Alumno("Bernardino", "Rivas", 30987654, 18);
+		a10.addInteres("matematicas");
+
+		Alumno a11 = new Alumno("Jose", "Paso", 33322112, 18);
+		a11.addInteres("problemas");
+
+		Alumno a12 = new Alumno("Isaac", "Newton", 12343565, 18);
+		a12.addInteres("sucesiones");
+		
+		Comision c5 = new Comision("Los Fibo", comparadorConsigna);
+		c5.addElemento(a10);
+		c5.addElemento(a11);
+		c5.addElemento(a12);
+		
+		Comision c6 = new Comision("Matea2", comparadorConsigna);
+		c6.addElemento(a8);
+		c6.addElemento(a9);
+		
+		Comision c7 = new Comision("Olimpiadas matematicas", comparadorConsigna);
+		c7.addElemento(c5);
+		c7.addElemento(c6);
+		
+		c7.imprimir();
+		
+		
+		
 		}
 }
